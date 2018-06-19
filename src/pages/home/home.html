@@ -1,14 +1,21 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar secondary>
+      <ion-title>Recent articles</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let feed of feeds" (click)="openFeed(feed)">
+        {{feed.title}}
+      </button>
+    </ion-list>
+    <button ion-button full (click)="addFeed()" action secondary>
+      <ion-icon name="add"></ion-icon> Add Feed
+    </button>
+  </ion-content>
+ 
+</ion-menu>
+ 
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
